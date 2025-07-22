@@ -1,0 +1,745 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Professor of Commerce - Jamuna Rani HS</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+  <style>
+    #achievements {
+    position: relative;
+    background: url("{% static 'arrow_ach.png' %}") no-repeat center center / cover;
+    padding: 80px 20px;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    min-height: 500px;
+    font-family: 'Segoe UI', sans-serif;
+     background-size: 40%;
+  }
+
+  #achievements h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #2a1305ff;
+  }
+
+  #achievements p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color:#2a1305ff;
+  }
+
+  #achievements .year-popup {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .year-popup span {
+  display: inline-block; /* Necessary for transform to work */
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 25px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  color: #2a1305ff;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 5px;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+
+#achievements.active .year-popup span:nth-child(1) {
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+#achievements.active .year-popup span:nth-child(2) {
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+#achievements.active .year-popup span:nth-child(3) {
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0.4s;
+}
+
+#achievements.active .year-popup span:nth-child(4) {
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0.6s;
+}
+
+
+  #achievements.active .year-popup span {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  #achievements.active .year-popup span:nth-child(1) { transition-delay: 0.2s; }
+  #achievements.active .year-popup span:nth-child(2) { transition-delay: 0.4s; }
+  #achievements.active .year-popup span:nth-child(3) { transition-delay: 0.6s; }
+  #achievements.active .year-popup span:nth-child(4) { transition-delay: 0.8s; }
+  #achievements.active .year-popup span:nth-child(5) { transition-delay: 1s; }
+
+  /* Bottom-right image */
+  #achievements .bottom-img {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 150px;
+    height: auto;
+    opacity: 0.9;
+  }
+
+
+
+    body {
+      font-family: 'Brolimo';
+      margin: 0;
+      background-color: #E5DCCD;
+      scroll-behavior: smooth;
+      color: #71513C;
+    }
+
+    header {
+      background-color: #2a1305ff;
+      color: #E5DCCD;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #E5DCCD;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #71513C;
+      padding: 1rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #71513C;
+      color: #E5DCCD;
+    }
+
+    section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    section img {
+      max-width: 300px;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background-color: #261306ff;
+      color: #E5DCCD;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    #home {
+      background-image: url("{% static 'imageb.png' %}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    #home h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    #home p {
+      font-size: 1.5rem;
+      max-width: 600px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #home h2 {
+        font-size: 2rem;
+      }
+
+      #home p {
+        font-size: 1rem;
+      }
+    }
+
+
+
+
+
+   
+
+
+/* Background and layout */
+  #publications {
+    background: url("{% static 'pubbg.png' %}") no-repeat center center / cover;
+    padding: 60px 20px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+  }
+
+  #publications h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  #publications p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+  }
+
+  /* Right-aligned image */
+  #publications img {
+    width: 200px;
+    position: absolute;
+    right: 20px;
+    top: 80px;
+  }
+
+  /* Glassmorphism form */
+  .glass-form {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-form input,
+  .glass-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+  }
+
+  .glass-form input {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+  }
+
+  .glass-form button {
+    background-color: #714C3A;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .glass-form button:hover {
+    background-color: #5c3a2e;
+  }
+
+  /* Table styling */
+  .pub-table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    color: #fff;
+  }
+
+  .pub-table th,
+  .pub-table td {
+    padding: 10px;
+    border: 1px solid #fff;
+  }
+
+  .pub-table th {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+
+
+
+/* Text animation */
+.about-text {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1s ease-out;
+}
+
+.about-text.animate {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Image animation */
+.about-image-container {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1s ease-out;
+}
+
+.about-image-container.animate {
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+
+
+
+  /* Animation for text */
+  .about-text {
+    animation: slideInLeft 1s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  
+
+
+
+  #conference {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f9f5f0;
+}
+
+.conference-desc {
+  font-size: 1.1em;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.flip-card {
+  background: transparent;
+  width: 220px;
+  height: 180px;
+  perspective: 1000px;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+}
+
+.flip-front {
+  background: #714C3A;
+}
+
+.flip-back {
+  background: #3a0d0dff;
+  transform: rotateY(180deg);
+}
+
+.conf-img {
+  margin-top: 40px;
+  max-width: 300px;
+}
+
+
+
+
+/* Glassmorphism style */
+  .glass-form {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 30px auto;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    color: white;
+    text-align: left; 
+  }
+
+  .glass-form input, .glass-form select, .glass-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    
+  }
+
+  .glass-form button {
+    background-color: #3a0d0dff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .glass-form button:hover {
+    background-color: #a48787ff;
+  }
+
+  /* Table Styling */
+  table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #3a0d0dff;
+    color: white;
+  }
+  td{
+    color:#762525ff;
+  }
+
+  td a {
+    color: #762525ff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  td a:hover {
+    text-decoration: underline;
+  }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Hello! Jamuna Rani HS</h1>
+    <p>Associate Professor of Commerce</p>
+    <p>Mcom, Mphil</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#publications">Publications</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#conference">Conference & Events</a>
+  </nav>
+
+  <section id="home" style="color: #E5DCCD;">
+  <h2>Welcome to My Academic World</h2>
+  <p style="max-width: 600px;">
+    Explore the journey of knowledge, growth, and contribution in the field of Commerce and Education.
+    This platform is dedicated to sharing educational achievements, scholarly work, and meaningful experiences
+    gathered over the years in teaching, research, and academic collaboration.
+  </p>
+
+  <p style="max-width: 600px;">
+    Stay informed about conferences, publications, and inspiring moments from my teaching career.
+    Whether you're a student, fellow educator, or a curious visitor — there's something here for everyone.
+  </p>
+
+  <p style="font-style: italic;">“Education is not the filling of a pail, but the lighting of a fire.”</p>
+</section>
+
+
+  <section id="about" style="display: flex; align-items: center; justify-content: space-between; text-align: left; gap: 2rem; flex-wrap: wrap;">
+  <!-- Text with animation -->
+  <div class="about-text" style="flex: 1; min-width: 280px; font-size: 1.3rem; line-height: 1.6;">
+    <h2 style="font-size: 2rem;">About Me</h2>
+    <p>
+      Hello! I am an Associate Professor of Commerce with a strong academic background and a deep passion for teaching and mentoring students. 
+      I have successfully completed my M.Com, M.Phil, and am currently pursuing a Ph.D. in Commerce. With years of experience in higher education, 
+      I am proud to serve as a Board of Examiners (BOE) and Board of Studies (BOS) member at Davanagere University, contributing to academic excellence 
+      and curriculum development.<br><br>
+
+      In addition to my academic roles, I am actively involved in student welfare and community engagement:<br>
+      • Scout and Guide Coordinator<br>
+      • Women’s Cell Coordinator
+    </p>
+  </div>
+
+  <!-- Image box with animation -->
+  <div class="about-image-container" style="flex: 1; text-align: center; min-width: 200px; background-color: #744A3A; padding: 30px; border-radius: 24px;">
+   
+
+    <img src="{% static 'about.png' %}" alt="Teaching Illustration" style="width: 100%; max-width: 500px; height: auto; border-radius: 16px;">
+  </div>
+</section>
+
+
+
+<section id="publications">
+  <h2 style="text-align: center;">Publications</h2>
+  <p style="text-align: center;">Author of numerous research papers in national and international journals focused on finance, HR, and commerce education.</p>
+
+  <!-- Glass Styled Form -->
+  <form method="POST" enctype="multipart/form-data" class="glass-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Display Publications Table -->
+  {% if publications %}
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Published Year</th>
+          <th>Journal</th>
+          <th>File</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pub in publications %}
+          <tr>
+            <td>{{ pub.title }}</td>
+            <td>{{ pub.published_year }}</td>
+            <td>{{ pub.journal }}</td>
+            <td>
+              {% if pub.file %}
+                <a href="{{ pub.file.url }}" download>📄 Download</a>
+              {% else %}
+                No file
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+</section>
+
+  
+
+  <section id="achievements" class="active"> 
+  <h2>Achievements</h2>
+  <p>Recipient of the Best Educator Award 2023 and recognized for excellence in commerce teaching and curriculum innovation.</p>
+
+  <div class="year-popup">
+    <span>2020: Innovation in Curriculum</span>
+    <span>2021: Top Faculty Recognition</span>
+    <span>2022: National Seminar Speaker</span>
+    <span>2023: Best Educator Award</span>
+    <span>2024: International Collaboration</span>
+  </div>
+ <img src="{% static 'af.png' %}" alt="Decorative Illustration" class="bottom-img">
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+ <!-- Conference Section -->
+<section id="conference">
+  <h2>Conference & Events</h2>
+  <p class="conference-desc">
+    Sharing insights and innovations at prestigious global events every year.
+  </p>
+
+  <div class="card-container">
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">2020<br>National Commerce Meet</div>
+        <div class="flip-back">Presented paper on Financial Reforms in India.</div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">2021<br>Women in Finance Seminar</div>
+        <div class="flip-back">Spoke on gender equity in corporate finance.</div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">2022<br>Global Teaching Summit</div>
+        <div class="flip-back">Conducted workshop on digital pedagogy.</div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">2023<br>International EduCon</div>
+        <div class="flip-back">Panelist in Higher Ed Transformation talk.</div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">2024<br>Research Leadership Forum</div>
+        <div class="flip-back">Keynote: Leading Change through Research.</div>
+      </div>
+    </div>
+  </div>
+
+  <img src="{% static 'conference.png' %}" alt="Conference" class="conf-img">
+</section>
+
+
+
+  <footer>
+    <p>&copy; 2025 Jamuna Rani HS | Associate Professor of Commerce</p>
+  </footer>
+
+</body>
+<script>
+  // Trigger animation when "About Me" nav link is clicked
+  document.querySelector('a[href="#about"]').addEventListener('click', function (e) {
+    // Delay to wait for smooth scroll to happen
+    setTimeout(() => {
+      document.querySelector('.about-text').classList.add('animate');
+      document.querySelector('.about-image-container').classList.add('animate');
+    }, 400); // adjust delay to match scroll speed
+  });
+
+
+  document.getElementById('publicationForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const title = document.getElementById('paperTitle').value;
+    const year = document.getElementById('year').value;
+    const journal = document.getElementById('journal').value;
+    const file = document.getElementById('fileUpload').files[0];
+
+    const table = document.getElementById('pubTable').getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    newRow.innerHTML = `
+      <td>${title}</td>
+      <td>${year}</td>
+      <td>${journal}</td>
+      <td>${file ? file.name : 'N/A'}</td>
+    `;
+
+    // Reset the form
+    this.reset();
+  });
+
+
+
+
+
+  document.querySelector('nav a[href="#achievements"]').addEventListener('click', function () {
+    setTimeout(() => {
+      document.getElementById('achievements').classList.add('active');
+    }, 200); // slight delay for smoother transition
+  });
+
+
+
+
+
+  <script>
+  window.addEventListener('scroll', function () {
+    const achievements = document.getElementById('achievements');
+    const position = achievements.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (position < screenHeight - 100) {
+      achievements.classList.add('active');
+    }
+  });
+</script>
+
+
+
+
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('achievements').classList.add('active');
+  });
+
+
+
+</script>
+
+</html>
