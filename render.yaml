@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: django-portfolio
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn _djangoproject.wsgi
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: your-secret-key
+      - key: DEBUG
+        value: False
